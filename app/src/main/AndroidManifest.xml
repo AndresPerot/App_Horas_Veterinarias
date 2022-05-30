@@ -26,9 +26,6 @@
             android:name=".ShowActivity"
             android:exported="false" />
         <activity
-            android:name=".DAa"
-            android:exported="false" />
-        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity

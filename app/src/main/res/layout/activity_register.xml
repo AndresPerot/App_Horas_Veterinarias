@@ -83,6 +83,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Registrar" />
+            <Button
+                android:id="@+id/activity_register_button_back_in2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Volver" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
