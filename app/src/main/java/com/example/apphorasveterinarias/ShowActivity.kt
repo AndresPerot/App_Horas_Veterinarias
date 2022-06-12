@@ -31,7 +31,7 @@ class ShowActivity : AppCompatActivity() {
         lvDatePet.setOnItemClickListener { adapterView, view, i, l ->
             run {
                 val datePet = allDatePets[i]
-                val
+
                 Toast.makeText(view.context, datePet.namePet, Toast.LENGTH_SHORT).show()
 
             }

@@ -8,4 +8,5 @@ class DatePetActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_date_pet)
     }
+
 }
