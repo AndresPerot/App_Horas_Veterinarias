@@ -28,10 +28,13 @@ class ShowActivity : AppCompatActivity() {
         val adapter = DatePetAdapter(this, allDatePets)
 
         lvDatePet.adapter = adapter
-        lvDatePet.setOnItemClickListener { adapterView, view, i, l -> {
-            val datePet = allDatePets[i]
-            Toast.makeText(view, datePet.namePet, Toast.LENGTH_SHORT).show
-        }
+        lvDatePet.setOnItemClickListener { adapterView, view, i, l ->
+            run {
+                val datePet = allDatePets[i]
+                val
+                Toast.makeText(view.context, datePet.namePet, Toast.LENGTH_SHORT).show()
+
+            }
 
         }
 
