@@ -25,7 +25,29 @@
                 android:id="@+id/activity_datepet_tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Placeholder: Namepet" />
+                android:text="Placeholder: Namepet"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/activity_datepet_tv_race"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="raza"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/activity_datepet_tv_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="fecha"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/activity_datepet_tv_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="telefono"
+                android:textSize="20sp" />
         </LinearLayout>
 
     </ScrollView>

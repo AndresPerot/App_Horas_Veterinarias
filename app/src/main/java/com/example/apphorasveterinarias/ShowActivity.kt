@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ListView
 import android.widget.Toast
+import com.example.apphorasveterinarias.Models.DatePet
 import com.example.apphorasveterinarias.controllers.DatePetController
 import com.example.apphorasveterinarias.ui.DatePetAdapter
 
@@ -31,6 +32,11 @@ class ShowActivity : AppCompatActivity() {
         lvDatePet.setOnItemClickListener { adapterView, view, i, l ->
             run {
                 val datePet = allDatePets[i]
+                val intent = Intent(view.context, DatePetActivity::class.java)
+                intent.putExtra("datepet", datePet)
+                view.context.startActivity(intent)
+
+
 
                 Toast.makeText(view.context, datePet.namePet, Toast.LENGTH_SHORT).show()
 
