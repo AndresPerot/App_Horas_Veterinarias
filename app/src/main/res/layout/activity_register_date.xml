@@ -85,11 +85,26 @@ tools:context=".RegisterDateActivity">
                     android:hint="Contacto ej:+56912345678" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16pt"
+                android:paddingLeft="8pt"
+                android:paddingRight="8pt"
+                android:id="@+id/activity_register_date_til_day">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dia" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <Button
                 android:id="@+id/activity_register_date_button_check_in2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Registrar" />
+
             <Button
                 android:id="@+id/activity_register_date_button_return"
                 android:layout_width="match_parent"
