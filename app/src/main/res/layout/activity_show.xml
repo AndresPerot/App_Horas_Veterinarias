@@ -3,89 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ShowActivity">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <ListView
+            android:id="@+id/activity_show_lv_datepet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/activity_show_date_button_return"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="8pt"
-            android:paddingRight="8pt">
-
-            <TextView
-                android:id="@+id/activity_show_date_tv_title3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16pt"
-                android:layout_marginBottom="16pt"
-                android:text="HORAS REGISTRADAS"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-            <TextView
-                android:id="@+id/activity_show_date_tv_name_pet1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nombre Mascota: Bigote" />
-
-            <TextView
-                android:id="@+id/activity_show_date_tv_race_pet1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Raza: Perro" />
-
-            <TextView
-                android:id="@+id/activity_show_date_tv_date_pet1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Hora: 25/05/2022 10:00" />
-
-            <TextView
-                android:id="@+id/activity_show_date_tv_contact_pet1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Contacto: +5692738521"
-                tools:layout_marginBottom="16pt" />
-            <TextView
-                android:id="@+id/activity_show_date_tv_name_pet2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nombre Mascota: Antonella" />
-
-            <TextView
-                android:id="@+id/activity_show_date_tv_race_pet2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Raza: Gato" />
-
-            <TextView
-                android:id="@+id/activity_show_date_tv_date_pet2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Hora: 25/05/2022 11:00" />
-
-            <TextView
-                android:id="@+id/activity_show_date_tv_contact_pet2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Contacto: +5697435261"
-                tools:layout_marginBottom="16pt" />
-            <Button
-                android:id="@+id/activity_show_date_button_return"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Volver" />
-        </LinearLayout>
-    </ScrollView>
+            android:text="volver" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
