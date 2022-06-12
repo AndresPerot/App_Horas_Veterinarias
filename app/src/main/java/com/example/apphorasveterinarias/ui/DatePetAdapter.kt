@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.example.apphorasveterinarias.Models.DatePet
 import com.example.apphorasveterinarias.R
 
-class DatePetAdapter(private val ctx: Context, private val datepets: List<DatePet>) : BaseAdapter() {
+class   DatePetAdapter(private val ctx: Context, private val datepets: List<DatePet>) : BaseAdapter() {
 
 
     override fun getCount(): Int {

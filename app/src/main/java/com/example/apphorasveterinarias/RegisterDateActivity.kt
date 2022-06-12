@@ -8,7 +8,9 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.apphorasveterinarias.utils.TilValidator
+import com.example.apphorasveterinarias.utils.showDatePickerDialog
 import com.google.android.material.textfield.TextInputLayout
+import java.util.*
 
 class RegisterDateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +22,13 @@ class RegisterDateActivity : AppCompatActivity() {
         val spnRaces =findViewById<Spinner>(R.id.activity_register_date_spn_raza)
         val tilpetname= findViewById<TextInputLayout>(R.id.activity_register_date_til_pet_name)
         val tilcontact= findViewById<TextInputLayout>(R.id.activity_register_date_til_contact)
+        val tildate = findViewById<TextInputLayout>(R.id.activity_register_date_til_date)
+
+
+
+        tildate.editText?.setOnClickListener { _ ->
+            showDatePickerDialog(this, tildate, Date())
+        }
 
 
         ArrayAdapter.createFromResource(
@@ -49,6 +58,7 @@ class RegisterDateActivity : AppCompatActivity() {
 
             val namepetValid = TilValidator(tilpetname).required().isValid()
             val contacValid= TilValidator(tilcontact).required().contacto().isValid()
+            val dateValid= TilValidator(tildate).required().dateAfter(Date()).isValid()
 
             val intent= Intent(this,MainActivity::class.java)
             if( namepetValid && contacValid ) {

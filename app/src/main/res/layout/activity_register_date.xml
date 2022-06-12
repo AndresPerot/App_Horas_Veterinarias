@@ -43,6 +43,20 @@ tools:context=".RegisterDateActivity">
                     android:hint="Nombre Mascota" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8pt"
+                android:id="@+id/activity_register_date_til_date">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="Seleccione Fecha" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:id="@+id/activity_register_date_tv_label_raza"
                 android:layout_width="match_parent"
@@ -52,11 +66,13 @@ tools:context=".RegisterDateActivity">
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            a<Spinner
+            <Spinner
                 android:id="@+id/activity_register_date_spn_raza"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="16pt" />
+
+
             <TextView
                 android:id="@+id/activity_register_date_tv_label_hora"
                 android:layout_width="match_parent"
@@ -85,19 +101,7 @@ tools:context=".RegisterDateActivity">
                     android:hint="Contacto ej:+56912345678" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16pt"
-                android:paddingLeft="8pt"
-                android:paddingRight="8pt"
-                android:id="@+id/activity_register_date_til_day">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Dia" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/activity_register_date_button_check_in2"
@@ -110,6 +114,7 @@ tools:context=".RegisterDateActivity">
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Volver" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

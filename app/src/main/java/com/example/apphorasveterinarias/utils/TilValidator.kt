@@ -4,12 +4,15 @@ import android.util.Patterns
 import android.widget.Toast
 import com.example.apphorasveterinarias.LoginActivity
 import com.google.android.material.textfield.TextInputLayout
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.regex.Pattern
 
 class TilValidator constructor(til: TextInputLayout) {
 
 
     private val til: TextInputLayout = til
+    private val formatter = SimpleDateFormat("yyyy-MM-dd")
     private val value: String = til.editText?.text.toString()
     private var required: Boolean = false;
     private var invalid: Boolean = false;
@@ -97,6 +100,34 @@ class TilValidator constructor(til: TextInputLayout) {
             this.setError(invalidField,"Escriba bien el numero de contacto(Ej: +56123456789)")
         }
 
+        return this
+    }
+
+    fun dateAfter(date: Date): TilValidator {
+        if (mustValidate()) {
+            var invalidField = false
+            try {
+                val dateValue = formatter.parse(this.value)
+                invalidField = !dateValue.after(date)
+            } catch (e: Exception) {
+                invalidField = true
+            }
+            this.setError(invalidField, "La fecha no puede ser anterior a ${formatter.format(date)}")
+        }
+        return this
+    }
+
+    fun dateBefore(date: Date): TilValidator {
+        if (mustValidate()) {
+            var invalidField = false
+            try {
+                val dateValue = formatter.parse(this.value)
+                invalidField = !dateValue.before(date)
+            } catch (e: Exception) {
+                invalidField = true
+            }
+            this.setError(invalidField, "La fecha no puede ser posterior a ${formatter.format(date)}")
+        }
         return this
     }
 
