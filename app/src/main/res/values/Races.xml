@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Races_array">
+        <item>Perro</item>
+        <item>Gato</item>
+        <item>Huron</item>
+        <item>Roedor</item>
+        <item>Erizo de Tierra</item>
+        <item>Araña</item>
+        <item>Boa</item>
+        <item>Otro</item>
+    </string-array>
+
+</resources>
