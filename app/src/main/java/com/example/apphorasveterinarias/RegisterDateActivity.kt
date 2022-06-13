@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.apphorasveterinarias.controllers.AuthController
 import com.example.apphorasveterinarias.utils.TilValidator
 import com.example.apphorasveterinarias.utils.showDatePickerDialog
 import com.google.android.material.textfield.TextInputLayout
@@ -55,15 +56,15 @@ class RegisterDateActivity : AppCompatActivity() {
             val race= spnRaces.selectedItem.toString()
             val hour= spnHours.selectedItem.toString()
             val contact= tilcontact.editText?.text
+            val date = tildate.editText?.text.toString()
 
             val namepetValid = TilValidator(tilpetname).required().isValid()
             val contacValid= TilValidator(tilcontact).required().contacto().isValid()
             val dateValid= TilValidator(tildate).required().dateAfter(Date()).isValid()
 
-            val intent= Intent(this,MainActivity::class.java)
-            if( namepetValid && contacValid ) {
+            if( namepetValid && contacValid && dateValid ) {
+                AuthController(this).registerDate(namepet, race, hour, contact, date)
                 Toast.makeText(this, "Su hora ha sido registrada", Toast.LENGTH_SHORT).show()
-                startActivity(intent)
             }else{
                 Toast.makeText(this, "Campos invalidos", Toast.LENGTH_SHORT).show()
             }
@@ -75,6 +76,7 @@ class RegisterDateActivity : AppCompatActivity() {
 
         btnToMain.setOnClickListener{
             val intent= Intent(this,MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
 
         }

@@ -98,7 +98,7 @@ tools:context=".RegisterDateActivity">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Contacto ej:+56912345678" />
+                    android:hint="Contacto" />
             </com.google.android.material.textfield.TextInputLayout>
 
 

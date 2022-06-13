@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16pt"
-                android:text="App Hora veterinarias"
+                android:text="Menu Principal"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -44,20 +44,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8pt"
                 android:text="Agendar nueva hora" />
-
-            <Button
-                android:id="@+id/activity_main_button_delete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8pt"
-                android:text="Eliminar hora" />
-
-            <Button
-                android:id="@+id/activity_main_button_update"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="14pt"
-                android:text="Cambiar Hora" />
 
             <Button
                 android:id="@+id/activity_main_button_off"

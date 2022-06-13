@@ -9,27 +9,27 @@
         android:id="@+id/item_datepet_tv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="nombre de mascota"
+        android:text="Nombre de mascota"
         android:textSize="24sp" />
 
     <TextView
         android:id="@+id/item_datepet_tv_title_tv_race"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="raza"
+        android:text="Raza"
         android:textSize="24sp" />
 
     <TextView
         android:id="@+id/item_datepet_tv_hour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="hora"
+        android:text="Hora"
         android:textSize="24sp" />
 
     <TextView
         android:id="@+id/item_datepet_tv_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="telefono"
+        android:text="Contacto"
         android:textSize="24sp" />
 </LinearLayout>

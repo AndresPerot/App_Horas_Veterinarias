@@ -67,26 +67,24 @@ class TilValidator constructor(til: TextInputLayout) {
     fun nombre(): TilValidator{
         if(mustValidate()){
             val invalidField= !(Pattern.compile("^" +
-                    "(?=.*[A-Z])" +        //at least 1 upper case letter
                     "(?=.*[a-z])" +        //at least 1 lower case letter
-                    ".{30,}" +               //at least 30 characters
+                    "(?=.*[A-Z])" +        //at least 1 upper case letter
+                    ".{2,}" +               //at least 2 characters
                     "$")).matcher(this.value).matches()
-            this.setError(invalidField,"Nombre mal escrito,Ej: Andres Ignacio")
+            this.setError(invalidField,"Campo Invalido")
         }
-
         return this
     }
 
     fun apellido(): TilValidator{
         if(mustValidate()){
             val invalidField= !(Pattern.compile("^" +
-                    "(?=.*[A-Z])" +        //at least 1 upper case letter
                     "(?=.*[a-z])" +        //at least 1 lower case letter
-                    ".{30,}" +               //at least 30 characters
+                    "(?=.*[A-Z])" +        //at least 1 upper case letter
+                    ".{2,}" +               //at least 2 characters
                     "$")).matcher(this.value).matches()
-            this.setError(invalidField,"Apellido mal escrito (Ej: Contreras Figueroa)")
+            this.setError(invalidField,"Campo Invalido")
         }
-
         return this
     }
 
@@ -95,7 +93,7 @@ class TilValidator constructor(til: TextInputLayout) {
             val invalidField= !(Pattern.compile("^" +
                     "(?=.*[0-9])" +
                     "(?=.*[+])" +    //at least 1 special character
-                    ".{12,}" +               //at least 30 characters
+                    ".{12,}" +               //at least 12 characters
                     "$")).matcher(this.value).matches()
             this.setError(invalidField,"Escriba bien el numero de contacto(Ej: +56123456789)")
         }

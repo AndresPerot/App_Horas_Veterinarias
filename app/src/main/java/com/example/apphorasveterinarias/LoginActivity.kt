@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import com.example.apphorasveterinarias.controllers.AuthController
 import com.example.apphorasveterinarias.utils.TilValidator
 import com.google.android.material.textfield.TextInputLayout
 
@@ -25,9 +26,9 @@ class LoginActivity : AppCompatActivity() {
             val emailValid = TilValidator(tilEmail).required().email().isValid()
             val paswordValid= TilValidator(tilpassword).required().password().isValid()
 
-            val intent= Intent(this,MainActivity::class.java)
             if( emailValid && paswordValid ) {
-                startActivity(intent)
+                AuthController(this).login(email, password)
+
             }else{
                 Toast.makeText(this, "Campos invalidos", Toast.LENGTH_SHORT).show()
             }
