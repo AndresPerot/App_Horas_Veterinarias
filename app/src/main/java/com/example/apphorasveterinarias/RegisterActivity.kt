@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import com.example.apphorasveterinarias.Models.User
+import com.example.apphorasveterinarias.Models.UserEntity
 import com.example.apphorasveterinarias.controllers.AuthController
 import com.example.apphorasveterinarias.utils.TilValidator
 import com.google.android.material.textfield.TextInputLayout
@@ -37,6 +39,11 @@ class RegisterActivity : AppCompatActivity() {
             val lastNameValid = TilValidator(tillastname).required().apellido().isValid()
             val emailValid = TilValidator(tilemail).required().email().isValid()
             val passwordValid= TilValidator(tilpassword).required().password().isValid()
+
+
+
+
+
 
 
             if (nameValid && lastNameValid && emailValid && passwordValid ) {

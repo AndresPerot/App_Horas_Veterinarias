@@ -4,8 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.text.Editable
 import android.widget.Toast
+import androidx.room.Room
 import com.example.apphorasveterinarias.LoginActivity
 import com.example.apphorasveterinarias.MainActivity
+import com.example.apphorasveterinarias.Models.User
+import com.example.apphorasveterinarias.Models.UserEntity
+import com.example.apphorasveterinarias.lib.AppDatabase
 
 class AuthController constructor(ctx: Context) {
     private val ctx = ctx
@@ -26,6 +30,26 @@ class AuthController constructor(ctx: Context) {
         val intent = Intent(this.ctx, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         this.ctx.startActivity(intent)
+    }
+
+    fun register2(user: User) {
+        val userEntity = UserEntity(
+            id = null,
+            name = user.name,
+            lastname = user.lastname,
+            email = user.email,
+            password = user.password
+
+        )
+        val db = Room.databaseBuilder(
+            ctx.applicationContext, AppDatabase::class.java, "database-name"
+        )
+            .allowMainThreadQueries()
+            .build()
+
+        val dao = db.userDao()
+
+        dao.insert(userEntity)
     }
 
 
