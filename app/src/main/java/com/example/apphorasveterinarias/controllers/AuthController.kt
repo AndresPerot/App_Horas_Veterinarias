@@ -3,11 +3,20 @@ package com.example.apphorasveterinarias.controllers
 import android.content.Context
 import android.content.Intent
 import android.text.Editable
+<<<<<<< HEAD
 import androidx.room.Room
 import com.example.apphorasveterinarias.LoginActivity
 import com.example.apphorasveterinarias.MainActivity
 import com.example.apphorasveterinarias.Models.DateEntity
 import com.example.apphorasveterinarias.Models.DatePet
+=======
+import android.widget.Toast
+import androidx.room.Room
+import com.example.apphorasveterinarias.LoginActivity
+import com.example.apphorasveterinarias.MainActivity
+import com.example.apphorasveterinarias.Models.User
+import com.example.apphorasveterinarias.Models.UserEntity
+>>>>>>> b32e80e1714ced4cfcecd294854088dea6264bd0
 import com.example.apphorasveterinarias.lib.AppDatabase
 
 class AuthController constructor(ctx: Context) {
@@ -48,6 +57,26 @@ class AuthController constructor(ctx: Context) {
         val intent = Intent(this.ctx, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         this.ctx.startActivity(intent)
+    }
+
+    fun register2(user: User) {
+        val userEntity = UserEntity(
+            id = null,
+            name = user.name,
+            lastname = user.lastname,
+            email = user.email,
+            password = user.password
+
+        )
+        val db = Room.databaseBuilder(
+            ctx.applicationContext, AppDatabase::class.java, "database-name"
+        )
+            .allowMainThreadQueries()
+            .build()
+
+        val dao = db.userDao()
+
+        dao.insert(userEntity)
     }
 
 
