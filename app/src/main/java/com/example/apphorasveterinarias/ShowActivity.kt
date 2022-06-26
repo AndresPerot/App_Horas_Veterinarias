@@ -1,12 +1,11 @@
 package com.example.apphorasveterinarias
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ListView
 import android.widget.Toast
-import com.example.apphorasveterinarias.Models.DatePet
+import androidx.appcompat.app.AppCompatActivity
 import com.example.apphorasveterinarias.controllers.DatePetController
 import com.example.apphorasveterinarias.ui.DatePetAdapter
 
@@ -33,7 +32,7 @@ class ShowActivity : AppCompatActivity() {
             run {
                 val datePet = allDatePets[i]
                 val intent = Intent(view.context, DatePetActivity::class.java)
-                intent.putExtra("datepet", datePet)
+                intent.putExtra("DatePet", "datePet")
                 view.context.startActivity(intent)
 
 

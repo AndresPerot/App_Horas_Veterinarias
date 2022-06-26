@@ -48,7 +48,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/activity_datepet_tv_phone"
+                android:id="@+id/activity_datepet_tv_contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24sp"

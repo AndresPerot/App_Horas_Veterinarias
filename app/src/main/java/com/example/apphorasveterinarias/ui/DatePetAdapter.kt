@@ -21,7 +21,7 @@ class   DatePetAdapter(private val ctx: Context, private val datepets: List<Date
     }
 
     override fun getItemId(i: Int): Long {
-        return datepets[i].id!!
+        return datepets[i].pet_id!!
     }
 
     override fun getView(i: Int, view: View?, viewGroup: ViewGroup?): View {
@@ -32,14 +32,16 @@ class   DatePetAdapter(private val ctx: Context, private val datepets: List<Date
         val datepet = datepets[i]
 
         val tvName = rowView.findViewById<TextView>(R.id.item_datepet_tv_name)
+        val tvOwner = rowView.findViewById<TextView>(R.id.item_datepet_tv_title_tv_owner)
         val tvRace = rowView.findViewById<TextView>(R.id.item_datepet_tv_title_tv_race)
         val tvHour = rowView.findViewById<TextView>(R.id.item_datepet_tv_hour)
-        val tvPhone = rowView.findViewById<TextView>(R.id.item_datepet_tv_phone)
+        val tvPhone = rowView.findViewById<TextView>(R.id.item_datepet_tv_contact)
 
         tvName.text = datepet.namePet
+        tvOwner.text= datepet.owner
         tvRace.text = datepet.race
         tvHour.text = datepet.hour
-        tvPhone.text = datepet.phone
+        tvPhone.text = datepet.contact
 
 
 

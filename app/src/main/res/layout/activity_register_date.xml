@@ -43,11 +43,25 @@ tools:context=".RegisterDateActivity">
                     android:hint="Nombre Mascota" />
             </com.google.android.material.textfield.TextInputLayout>
 
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="16pt"
+                android:id="@+id/activity_register_date_til_owner">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dueño" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8pt"
-                android:id="@+id/activity_register_date_til_date">
+                android:id="@+id/activity_register_date_til_date_pet">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"

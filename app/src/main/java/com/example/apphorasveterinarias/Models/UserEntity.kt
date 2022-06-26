@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey
     @ColumnInfo(name = "first_name") val name: String,
     @ColumnInfo(name = "last_name") val lastname: String,
     @ColumnInfo(name = "email") val email: String,
-    val password: String
+    @ColumnInfo(name = "password")val password: String
          )
 
 

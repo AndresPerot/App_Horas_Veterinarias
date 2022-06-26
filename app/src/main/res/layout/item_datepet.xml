@@ -18,6 +18,12 @@
         android:layout_height="wrap_content"
         android:text="Raza"
         android:textSize="24sp" />
+    <TextView
+        android:id="@+id/item_datepet_tv_title_tv_owner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dueño"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/item_datepet_tv_hour"
@@ -27,7 +33,7 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/item_datepet_tv_phone"
+        android:id="@+id/item_datepet_tv_contact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Contacto"
