@@ -9,6 +9,7 @@ import com.example.apphorasveterinarias.MainActivity
 import com.example.apphorasveterinarias.Models.User
 import com.example.apphorasveterinarias.Models.UserEntity
 import com.example.apphorasveterinarias.lib.AppDatabase
+import com.example.apphorasveterinarias.lib.BCrypt
 
 class AuthController constructor(ctx: Context) {
     private val ctx = ctx
@@ -30,12 +31,13 @@ class AuthController constructor(ctx: Context) {
     }
 
     fun register(user: User) {
+        val hashedPassword = BCrypt.hashpw(user.password, BCrypt.gensalt())
         val userEntity = UserEntity(
             id = null,
             name = user.name,
             lastname = user.lastname,
             email = user.email,
-            password = user.password
+            password = hashedPassword
 
         )
         val db = Room.databaseBuilder(
