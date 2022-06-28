@@ -40,11 +40,6 @@ class RegisterActivity : AppCompatActivity() {
             val passwordValid= TilValidator(tilpassword).required().password().isValid()
 
 
-
-
-
-
-
             if (nameValid && lastNameValid && emailValid && passwordValid ) {
                 val user = User(
                     id= null,

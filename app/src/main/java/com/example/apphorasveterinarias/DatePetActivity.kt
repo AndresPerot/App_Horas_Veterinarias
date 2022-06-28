@@ -1,17 +1,22 @@
 package com.example.apphorasveterinarias
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.apphorasveterinarias.Models.DatePet
+import com.example.apphorasveterinarias.controllers.DatePetController
 
 class DatePetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_date_pet)
 
+        val btntoUpdate= findViewById<Button>(R.id.activity_datepet_button_update)
+        val btntoDelete= findViewById<Button>(R.id.activity_datepet_button_delete)
         val datepet = intent.getSerializableExtra("datepet") as DatePet
 
+        val tvpet_id = findViewById<TextView>(R.id.activity_datepet_tv_id_pet)
         val tvnamePet = findViewById<TextView>(R.id.activity_datepet_tv_name)
         val tvowner= findViewById<TextView>(R.id.activity_register_date_til_owner)
         val tvrace = findViewById<TextView>(R.id.activity_datepet_tv_race)
@@ -23,6 +28,15 @@ class DatePetActivity : AppCompatActivity() {
         tvrace.text = datepet.race
         tvdate.text = datepet.hour
         tvcontact.text = datepet.contact
+
+        btntoDelete.setOnClickListener {
+            DatePetController(this).delete(pet_id = tvpet_id as Long)
+
+        }
+
+        btntoUpdate{
+            DatePetController(ctx = this).
+        }
 
     }
 

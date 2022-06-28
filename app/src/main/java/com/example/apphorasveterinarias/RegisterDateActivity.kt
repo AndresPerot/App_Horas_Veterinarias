@@ -32,6 +32,7 @@ class RegisterDateActivity : AppCompatActivity() {
 
 
 
+
         tildate.editText?.setOnClickListener { _ ->
             showDatePickerDialog(this, tildate, Date())
         }
@@ -77,7 +78,8 @@ class RegisterDateActivity : AppCompatActivity() {
                     race = race,
                     hour = hour,
                     contact = contact,
-                    date_pet = SimpleDateFormat("yyyy-MM-dd").parse(date_pet)
+                    date_pet = SimpleDateFormat("yyyy-MM-dd").parse(date_pet),
+                    user_id = 0
                 )
 
                 DatePetController(this).register(datePet)

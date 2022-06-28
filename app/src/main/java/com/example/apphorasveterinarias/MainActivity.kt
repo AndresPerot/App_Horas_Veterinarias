@@ -1,9 +1,10 @@
 package com.example.apphorasveterinarias
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.example.apphorasveterinarias.controllers.AuthController
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,10 +28,8 @@ class MainActivity : AppCompatActivity() {
         val btnToOff= findViewById<Button>(R.id.activity_main_button_off)
 
         btnToOff.setOnClickListener{
-            val intent4= Intent(this,LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent4)
-            finish()
+            val controller = AuthController(ctx = this)
+            controller.clearSession()
         }
 
     }

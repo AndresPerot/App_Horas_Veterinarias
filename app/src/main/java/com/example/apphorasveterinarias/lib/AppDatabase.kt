@@ -10,7 +10,7 @@ import com.example.apphorasveterinarias.dao.UserDAO
 import com.example.apphorasveterinarias.utils.Converters
 
 
-@Database(entities = [UserEntity::class, DateEntity::class], exportSchema = false, version = 5)
+@Database(entities = [UserEntity::class, DateEntity::class], exportSchema = false, version = 7)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDAO

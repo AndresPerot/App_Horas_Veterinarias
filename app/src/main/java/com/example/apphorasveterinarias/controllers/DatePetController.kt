@@ -9,12 +9,12 @@ import com.example.apphorasveterinarias.Models.DateEntity
 import com.example.apphorasveterinarias.Models.DatePet
 import com.example.apphorasveterinarias.lib.AppDatabase
 
-class DatePetController constructor(ctx: Context, pet_id:Long=0) {
+class DatePetController constructor(ctx: Context, userId:Long=0) {
     private val ctx = ctx
-    private val pet_id = pet_id
+    private val userId = userId
     private val dao = Room.databaseBuilder(
         ctx,
-        AppDatabase::class.java, "app-horas-veterinarias"
+        AppDatabase::class.java, "database-name"
 
     )
         .allowMainThreadQueries()
@@ -23,7 +23,7 @@ class DatePetController constructor(ctx: Context, pet_id:Long=0) {
         .dateDAO()
 
     fun getAll (): List<DatePet> {
-        val DatePetEntities = dao.findAll(pet_id)
+        val DatePetEntities = dao.findAll(userId)
 
         val date_pets = ArrayList<DatePet>()
 
@@ -34,7 +34,8 @@ class DatePetController constructor(ctx: Context, pet_id:Long=0) {
             date_pet = date_pet.date_pet,
             hour = date_pet.hour,
             race = date_pet.race,
-            contact = date_pet.contact
+            contact = date_pet.contact,
+            user_id= date_pet.user_id
         )) }
 
         return date_pets
@@ -44,13 +45,14 @@ class DatePetController constructor(ctx: Context, pet_id:Long=0) {
     fun register (datePet: DatePet){
 
         val dateEntity= DateEntity(
-            pet_id=null,
+            pet_id = null,
             name_pet = datePet.namePet,
             owner = datePet.owner,
             race = datePet.race,
             hour = datePet.hour,
             contact = datePet.contact,
-            date_pet = datePet.date_pet
+            date_pet = datePet.date_pet,
+            user_id = datePet.user_id
         )
 
         val db = Room.databaseBuilder(
@@ -69,6 +71,15 @@ class DatePetController constructor(ctx: Context, pet_id:Long=0) {
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         this.ctx.startActivity(intent)
     }
+    fun delete (pet_id: Long){
+         dao.delete(petId = pet_id)
+    }
 
+    fun update (pet_id: Long){
+        dao.update()
+
+    }
 
 }
+
+

@@ -14,13 +14,16 @@
         android:theme="@style/Theme.AppHorasVeterinarias"
         tools:targetApi="31">
         <activity
+            android:name=".Splash"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".DatePetActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UpdateActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DeleteDateActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterDateActivity"
@@ -34,11 +37,6 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"

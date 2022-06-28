@@ -9,7 +9,8 @@ data class DatePet(
     val race: String,
     val hour: String,
     val date_pet: Date?,
-    val contact: String
+    val contact: String,
+    val user_id:Long
     )
 
 

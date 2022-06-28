@@ -17,5 +17,6 @@ data class DateEntity (
     @ColumnInfo(name = "date_pet") val date_pet: Date?,
     @ColumnInfo(name = "hour") val hour: String,
     @ColumnInfo(name = "contact") val contact: String,
+    @ColumnInfo(name="user_id") val user_id:Long
 
     )
