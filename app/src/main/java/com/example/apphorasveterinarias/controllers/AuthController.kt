@@ -8,14 +8,23 @@ import android.widget.Toast
 import androidx.room.Room
 import com.example.apphorasveterinarias.LoginActivity
 import com.example.apphorasveterinarias.MainActivity
+import com.example.apphorasveterinarias.Models.LoginPayloadDTO
+import com.example.apphorasveterinarias.Models.LoginResponseDTO
 import com.example.apphorasveterinarias.Models.User
 import com.example.apphorasveterinarias.Models.UserEntity
 import com.example.apphorasveterinarias.lib.AppDatabase
 import com.example.apphorasveterinarias.lib.BCrypt
+import com.example.apphorasveterinarias.lib.RetrofitClient
+import com.example.apphorasveterinarias.servicies.AuthServicie
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class AuthController constructor(ctx: Context) {
     private val ctx = ctx
+    private val retrofit = RetrofitClient.getRetrofitInstance()
+    private val authServicie = retrofit.create(AuthServicie::class.java)
     private val INCORRECT_CREDENTIALS= "Credenciales incorrectas"
     private val sharedPref = ctx.getSharedPreferences("app-horas-veterinarias", Context.MODE_PRIVATE)
     private val dao = Room.databaseBuilder(
@@ -29,23 +38,36 @@ class AuthController constructor(ctx: Context) {
         .userDao()
 
     fun login(email: String, password: String) {
-        val user= dao.findByEmail(email)
-        if(user == null){
-            Toast.makeText(this.ctx, INCORRECT_CREDENTIALS, Toast.LENGTH_SHORT).show()
-            return
-             }
-        if (BCrypt.checkpw(password, user.password)) {
-            Toast.makeText(this.ctx, "Bienvenido ${user.name}", Toast.LENGTH_SHORT).show()
-            val sharedEdit = sharedPref.edit()
-            sharedEdit.putLong("user_id", user.id!!)
-            sharedEdit.commit()
-            val intent = Intent(this.ctx, MainActivity::class.java)
-            this.ctx.startActivity(intent)
-            (this.ctx as Activity).finish()
-        } else {
-            Toast.makeText(this.ctx, INCORRECT_CREDENTIALS, Toast.LENGTH_SHORT).show()
-        }
+        val loginPayload = LoginPayloadDTO(email, password)
+        val call = authServicie.login(loginPayload)
+
+        call.enqueue(object : Callback<LoginResponseDTO> {
+            override fun onFailure(call: Call<LoginResponseDTO>, t: Throwable) {
+                Toast.makeText(ctx, "Error de conexión", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(
+                call: Call<LoginResponseDTO>,
+                response: Response<LoginResponseDTO>
+            ) {
+                if (response.code() != 200) {
+                    Toast.makeText(ctx, INCORRECT_CREDENTIALS, Toast.LENGTH_SHORT).show()
+                } else {
+                    val bodyResponse = response.body()
+                    Toast.makeText(ctx, "Bienvenido ${bodyResponse?.user?.id}", Toast.LENGTH_SHORT).show()
+                    val sharedEdit = sharedPref.edit()
+                    sharedEdit.putLong("user_id", bodyResponse?.user?.id!!)
+                    sharedEdit.putString("user_jwt", bodyResponse?.jwt!!)
+                    sharedEdit.commit()
+
+                    val intent = Intent(ctx, MainActivity::class.java)
+                    ctx.startActivity(intent)
+                    (ctx as Activity).finish()
+                }
+            }
+        })
     }
+
 
     fun register(user: User) {
         val hashedPassword = BCrypt.hashpw(user.password, BCrypt.gensalt())

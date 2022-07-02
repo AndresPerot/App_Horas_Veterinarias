@@ -57,7 +57,7 @@ class TilValidator constructor(til: TextInputLayout) {
                     "(?=.*[A-Z])" +        //at least 1 upper case letter
                     "(?=.*[@#$%^&+=!])" +    //at least 1 special character
                     "(?=\\S+$)" +           //no white spaces
-                    ".{4,}" +               //at least 4 characters
+                    ".{6,}" +               //at least 6 characters
                     "$")).matcher(this.value).matches()
             this.setError(invalidField,"El valor de la contraseña es invalido")
         }
