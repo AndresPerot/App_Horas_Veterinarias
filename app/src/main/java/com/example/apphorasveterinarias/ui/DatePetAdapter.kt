@@ -27,7 +27,7 @@ class   DatePetAdapter(private val ctx: Context, private val datepets: List<Date
     override fun getView(i: Int, view: View?, viewGroup: ViewGroup?): View {
         val inflater = LayoutInflater.from(ctx)
 
-       val rowView = inflater.inflate(R.layout.item_datepet, null)
+       val rowView = inflater.inflate(R.layout.item_datepet1, null)
 
         val datepet = datepets[i]
 
@@ -35,13 +35,13 @@ class   DatePetAdapter(private val ctx: Context, private val datepets: List<Date
         val tvOwner = rowView.findViewById<TextView>(R.id.item_datepet_tv_title_tv_owner)
         val tvRace = rowView.findViewById<TextView>(R.id.item_datepet_tv_title_tv_race)
         val tvHour = rowView.findViewById<TextView>(R.id.item_datepet_tv_hour)
-        val tvPhone = rowView.findViewById<TextView>(R.id.item_datepet_tv_contact)
+        val tvContact = rowView.findViewById<TextView>(R.id.item_datepet_tv_contact)
 
         tvName.text = datepet.namePet
         tvOwner.text= datepet.owner
         tvRace.text = datepet.race
         tvHour.text = datepet.hour
-        tvPhone.text = datepet.contact
+        tvContact.text = datepet.contact
 
 
 

@@ -21,21 +21,22 @@
             android:paddingLeft="8pt"
             android:paddingRight="8pt">
 
-            <TextView
-                android:id="@+id/activity_datepet_tv_id_pet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32sp"
-                android:layout_marginBottom="16sp"
-                android:text="Id Mascota"
-                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/activity_datepet_tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16sp"
+                android:layout_marginTop="16sp"
                 android:text="Nombre Mascota"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/activity_datepet_tv_owner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:text="Dueño"
                 android:textSize="24sp" />
 
             <TextView
@@ -44,6 +45,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16sp"
                 android:text="Raza"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/activity_datepet_tv_hour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:baselineAligned="false"
+                android:text="Hora"
                 android:textSize="24sp" />
 
             <TextView

@@ -1,5 +1,6 @@
 package com.example.apphorasveterinarias.Models
 
+import java.io.Serializable
 import java.util.*
 
 data class DatePet(
@@ -11,6 +12,6 @@ data class DatePet(
     val date_pet: Date?,
     val contact: String,
     val user_id:Long
-    )
+    ) :Serializable
 
 

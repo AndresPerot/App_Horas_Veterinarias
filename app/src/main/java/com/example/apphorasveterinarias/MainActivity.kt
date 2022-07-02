@@ -12,20 +12,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btnToShowDate= findViewById<Button>(R.id.activity_main_button_search)
+        val btnToRegisterDate= findViewById<Button>(R.id.activity_main_button_new1)
+        val btnToOff= findViewById<Button>(R.id.activity_main_button_off)
+
 
         btnToShowDate.setOnClickListener{
             val intent= Intent(this,ShowActivity::class.java)
             startActivity(intent)
 
         }
-        val btnToRegisterDate= findViewById<Button>(R.id.activity_main_button_new1)
+
 
         btnToRegisterDate.setOnClickListener{
             val intent1= Intent(this,RegisterDateActivity::class.java)
             startActivity(intent1)
 
         }
-        val btnToOff= findViewById<Button>(R.id.activity_main_button_off)
+
 
         btnToOff.setOnClickListener{
             val controller = AuthController(ctx = this)

@@ -48,12 +48,11 @@ class RegisterActivity : AppCompatActivity() {
                     email = email,
                     password = password
                 )
-
-                Toast.makeText(this, "Contraseña creada", Toast.LENGTH_SHORT).show()
                 AuthController(this).register(user)
             } else {
                 Toast.makeText(this, "Campos invalidos", Toast.LENGTH_SHORT).show()
             }
+
         }
     }
 }

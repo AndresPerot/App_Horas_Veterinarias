@@ -22,7 +22,7 @@ interface DateDAO {
     @Insert
     fun insertDatePet(date: DateEntity)
 
-    @Query("SELECT * FROM date_pet WHERE pet_id= :petId"  )
-    fun delete (petId:Long): DateEntity
+    @Query("DELETE FROM date_pet WHERE pet_id = :id")
+    fun delete(id: Long)
 
 }

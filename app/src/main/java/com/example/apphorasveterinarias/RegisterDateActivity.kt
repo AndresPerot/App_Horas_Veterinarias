@@ -1,6 +1,7 @@
 package com.example.apphorasveterinarias
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -22,6 +23,7 @@ class RegisterDateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_date)
 
+        val sharedPref = this.getSharedPreferences("app-horas-veterinarias", Context.MODE_PRIVATE)
         val btnRegisterDate= findViewById<Button>(R.id.activity_register_date_button_check_in2)
         val spnHours = findViewById<Spinner>(R.id.activity_register_date_spn_hora)
         val spnRaces =findViewById<Spinner>(R.id.activity_register_date_spn_raza)
@@ -79,7 +81,7 @@ class RegisterDateActivity : AppCompatActivity() {
                     hour = hour,
                     contact = contact,
                     date_pet = SimpleDateFormat("yyyy-MM-dd").parse(date_pet),
-                    user_id = 0
+                    user_id = sharedPref.getLong("user_id",-1)
                 )
 
                 DatePetController(this).register(datePet)
@@ -87,7 +89,8 @@ class RegisterDateActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this, "Campos invalidos", Toast.LENGTH_SHORT).show()
             }
-
+            val intent= Intent(this,MainActivity::class.java)
+            startActivity(intent)
 
         }
 

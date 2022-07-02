@@ -35,7 +35,7 @@ class AuthController constructor(ctx: Context) {
             return
              }
         if (BCrypt.checkpw(password, user.password)) {
-            Toast.makeText(this.ctx, "Bienvenido ${user.name+" "+user.lastname}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.ctx, "Bienvenido ${user.name}", Toast.LENGTH_SHORT).show()
             val sharedEdit = sharedPref.edit()
             sharedEdit.putLong("user_id", user.id!!)
             sharedEdit.commit()
@@ -69,15 +69,6 @@ class AuthController constructor(ctx: Context) {
             Toast.makeText(this.ctx, INCORRECT_CREDENTIALS, Toast.LENGTH_SHORT).show()
         }
 
-        val db = Room.databaseBuilder(
-            ctx.applicationContext,
-            AppDatabase::class.java, "database-name"
-        )
-            .allowMainThreadQueries()
-            .build()
-
-        val dao = db.userDao()
-
         dao.insertUser(userEntity)
 
         Toast.makeText(this.ctx, "Cuenta Registrada", Toast.LENGTH_SHORT).show()
@@ -85,6 +76,7 @@ class AuthController constructor(ctx: Context) {
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         this.ctx.startActivity(intent)
     }
+
     fun checkUserSession() {
         val id = sharedPref.getLong("user_id", -1)
 
@@ -107,6 +99,10 @@ class AuthController constructor(ctx: Context) {
         val intent = Intent(this.ctx, LoginActivity::class.java)
         this.ctx.startActivity(intent)
         (this.ctx as Activity).finish()
+    }
+
+    fun getSessionUserId(): Long {
+        return sharedPref.getLong("user_id", -1)
     }
 }
 

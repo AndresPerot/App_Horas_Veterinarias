@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio/App_Horas_Veterinarias-desarrollo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.124" />
         <entry key="..\:/Android Studio/App_Horas_Veterinarias-desarrollo/app/src/main/res/layout/activity_daa.xml" value="0.24547101449275363" />
         <entry key="..\:/Android Studio/App_Horas_Veterinarias-desarrollo/app/src/main/res/layout/activity_date_pet.xml" value="0.19427083333333334" />
         <entry key="..\:/Android Studio/App_Horas_Veterinarias-desarrollo/app/src/main/res/layout/activity_delete_date.xml" value="0.24547101449275363" />
+        <entry key="..\:/Android Studio/App_Horas_Veterinarias-desarrollo/app/src/main/res/layout/activity_edit_datepet.xml" value="0.2" />
+        <entry key="..\:/Android Studio/App_Horas_Veterinarias-desarrollo/app/src/main/res/layout/activity_item_date.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android Studio/App_Horas_Veterinarias-desarrollo/app/src/main/res/layout/activity_item_datepet.xml" value="0.25416666666666665" />
         <entry key="..\:/Android Studio/App_Horas_Veterinarias-desarrollo/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Android Studio/App_Horas_Veterinarias-desarrollo/app/src/main/res/layout/activity_main.xml" value="0.24547101449275363" />
         <entry key="..\:/Android Studio/App_Horas_Veterinarias-desarrollo/app/src/main/res/layout/activity_register.xml" value="0.24547101449275363" />
@@ -14,6 +18,7 @@
         <entry key="..\:/Android Studio/App_Horas_Veterinarias-desarrollo/app/src/main/res/layout/activity_splash.xml" value="0.11302083333333333" />
         <entry key="..\:/Android Studio/App_Horas_Veterinarias-desarrollo/app/src/main/res/layout/activity_update.xml" value="0.24010416666666667" />
         <entry key="..\:/Android Studio/App_Horas_Veterinarias-desarrollo/app/src/main/res/layout/item_datepet.xml" value="0.145703125" />
+        <entry key="..\:/Android Studio/App_Horas_Veterinarias-desarrollo/app/src/main/res/layout/item_datepet1.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/AppHorasVeterinarias/app/src/main/res/layout/activity_login.xml" value="0.1859375" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/AppHorasVeterinarias/app/src/main/res/layout/activity_main.xml" value="0.17481884057971014" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/AppHorasVeterinarias/app/src/main/res/layout/activity_register.xml" value="0.2" />
