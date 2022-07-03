@@ -10,10 +10,9 @@ import com.example.apphorasveterinarias.LoginActivity
 import com.example.apphorasveterinarias.MainActivity
 import com.example.apphorasveterinarias.Models.LoginPayloadDTO
 import com.example.apphorasveterinarias.Models.LoginResponseDTO
+import com.example.apphorasveterinarias.Models.RegisterPayloadDTO
 import com.example.apphorasveterinarias.Models.User
-import com.example.apphorasveterinarias.Models.UserEntity
 import com.example.apphorasveterinarias.lib.AppDatabase
-import com.example.apphorasveterinarias.lib.BCrypt
 import com.example.apphorasveterinarias.lib.RetrofitClient
 import com.example.apphorasveterinarias.servicies.AuthServicie
 import retrofit2.Call
@@ -22,15 +21,16 @@ import retrofit2.Response
 
 
 class AuthController constructor(ctx: Context) {
+
+    private val sharedPref = ctx.getSharedPreferences("app-horas-veterinarias", Context.MODE_PRIVATE)
+    private val INCORRECT_CREDENTIALS = "Credenciales incorrectas"
     private val ctx = ctx
     private val retrofit = RetrofitClient.getRetrofitInstance()
-    private val authServicie = retrofit.create(AuthServicie::class.java)
-    private val INCORRECT_CREDENTIALS= "Credenciales incorrectas"
-    private val sharedPref = ctx.getSharedPreferences("app-horas-veterinarias", Context.MODE_PRIVATE)
+    private val authService = retrofit.create(AuthServicie::class.java)
+
     private val dao = Room.databaseBuilder(
         ctx,
         AppDatabase::class.java, "database-name"
-
     )
         .allowMainThreadQueries()
         .fallbackToDestructiveMigration()
@@ -39,7 +39,7 @@ class AuthController constructor(ctx: Context) {
 
     fun login(email: String, password: String) {
         val loginPayload = LoginPayloadDTO(email, password)
-        val call = authServicie.login(loginPayload)
+        val call = authService.login(loginPayload)
 
         call.enqueue(object : Callback<LoginResponseDTO> {
             override fun onFailure(call: Call<LoginResponseDTO>, t: Throwable) {
@@ -68,35 +68,34 @@ class AuthController constructor(ctx: Context) {
         })
     }
 
-
     fun register(user: User) {
-        val hashedPassword = BCrypt.hashpw(user.password, BCrypt.gensalt())
-        val userEntity = UserEntity(
-            id = null,
-            name = user.name,
-            lastname = user.lastname,
-            email = user.email,
-            password = hashedPassword
-
+        val registerPayload = RegisterPayloadDTO(
+            user.username,
+            user.email,
+            user.password
         )
 
-        try {
-            dao.insertUser(userEntity)
+        val call = authService.register(registerPayload)
 
-            Toast.makeText(this.ctx, "Cuenta registrada", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this.ctx, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            this.ctx.startActivity(intent)
-        } catch (e: Exception) {
-            Toast.makeText(this.ctx, INCORRECT_CREDENTIALS, Toast.LENGTH_SHORT).show()
-        }
+        call.enqueue(object : Callback<Void> {
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Toast.makeText(ctx, "Error de conexión", Toast.LENGTH_SHORT).show()
+            }
 
-        dao.insertUser(userEntity)
-
-        Toast.makeText(this.ctx, "Cuenta Registrada", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this.ctx, LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        this.ctx.startActivity(intent)
+            override fun onResponse(
+                call: Call<Void>,
+                response: Response<Void>
+            ) {
+                if (response.code() != 200) {
+                    Toast.makeText(ctx, "Cuenta existente", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(ctx, "Cuenta registrada", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(ctx, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    ctx.startActivity(intent)
+                }
+            }
+        })
     }
 
     fun checkUserSession() {
@@ -114,17 +113,17 @@ class AuthController constructor(ctx: Context) {
         }, 2000)
     }
 
+    fun getSessionUserId(): Long {
+        return sharedPref.getLong("user_id", -1)
+    }
+
     fun clearSession() {
         val editor = sharedPref.edit()
         editor.remove("user_id")
+        editor.remove("user_jwt")
         editor.commit()
         val intent = Intent(this.ctx, LoginActivity::class.java)
         this.ctx.startActivity(intent)
         (this.ctx as Activity).finish()
     }
-
-    fun getSessionUserId(): Long {
-        return sharedPref.getLong("user_id", -1)
-    }
 }
-

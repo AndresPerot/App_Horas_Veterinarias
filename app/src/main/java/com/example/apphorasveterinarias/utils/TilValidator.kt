@@ -1,8 +1,6 @@
 package com.example.apphorasveterinarias.utils
 
 import android.util.Patterns
-import android.widget.Toast
-import com.example.apphorasveterinarias.LoginActivity
 import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
 import java.util.*
@@ -68,7 +66,6 @@ class TilValidator constructor(til: TextInputLayout) {
         if(mustValidate()){
             val invalidField= !(Pattern.compile("^" +
                     "(?=.*[a-z])" +        //at least 1 lower case letter
-                    "(?=.*[A-Z])" +        //at least 1 upper case letter
                     ".{2,}" +               //at least 2 characters
                     "$")).matcher(this.value).matches()
             this.setError(invalidField,"Campo Invalido")

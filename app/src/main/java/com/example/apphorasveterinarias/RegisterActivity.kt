@@ -17,8 +17,7 @@ class RegisterActivity : AppCompatActivity() {
 
         val btnToLogin = findViewById<Button>(R.id.activity_register_button_check)
         val btnToMain = findViewById<Button>(R.id.activity_register_button_back)
-        val tilname = findViewById<TextInputLayout>(R.id.activity_register_til_name)
-        val tillastname = findViewById<TextInputLayout>(R.id.activity_register_til_last_name)
+        val tilusername = findViewById<TextInputLayout>(R.id.activity_register_til_name)
         val tilemail = findViewById<TextInputLayout>(R.id.activity_register_til_email)
         val tilpassword = findViewById<TextInputLayout>(R.id.activity_register_til_password)
 
@@ -29,22 +28,19 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         btnToLogin.setOnClickListener {
-            val name = tilname.editText?.text.toString()
-            val lastName= tillastname.editText?.text.toString()
+            val username = tilusername.editText?.text.toString()
             val email= tilemail.editText?.text.toString()
             val password= tilpassword.editText?.text.toString()
 
-            val nameValid = TilValidator(tilname).required().nombre().isValid()
-            val lastNameValid = TilValidator(tillastname).required().apellido().isValid()
+            val usernameValid = TilValidator(tilusername).required().nombre().isValid()
             val emailValid = TilValidator(tilemail).required().email().isValid()
             val passwordValid= TilValidator(tilpassword).required().password().isValid()
 
 
-            if (nameValid && lastNameValid && emailValid && passwordValid ) {
+            if (usernameValid && emailValid && passwordValid ) {
                 val user = User(
                     id= null,
-                    name = name,
-                    lastname = lastName,
+                    username = username,
                     email = email,
                     password = password
                 )
