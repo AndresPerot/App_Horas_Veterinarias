@@ -26,7 +26,7 @@ public class RetrofitClient {
                     .build();
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl("https://10.0.2.2:1337")
+                    .baseUrl("https://horasveterinarias-app-strapi.herokuapp.com")
                     .client(client)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();
