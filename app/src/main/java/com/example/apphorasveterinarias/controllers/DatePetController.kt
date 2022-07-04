@@ -13,7 +13,7 @@ import com.example.apphorasveterinarias.lib.AppDatabase
 class DatePetController constructor(ctx: Context, userId:Long=0) {
     private val ctx = ctx
     private val sharedPref = ctx.getSharedPreferences("app-horas-veterinarias", Context.MODE_PRIVATE)
-    private val userId = userId
+    private val userId = sharedPref.getLong("user_id", -1)
     private val dao = Room.databaseBuilder(
         ctx,
         AppDatabase::class.java, "database-name"
@@ -25,7 +25,7 @@ class DatePetController constructor(ctx: Context, userId:Long=0) {
         .dateDAO()
 
     fun getAll (): List<DatePet> {
-        val DatePetEntities = dao.findAll(userId=sharedPref.getLong("user_id",-1))
+        val DatePetEntities = dao.findAll(userId)
 
         val datepets = ArrayList<DatePet>()
 
@@ -37,7 +37,7 @@ class DatePetController constructor(ctx: Context, userId:Long=0) {
             hour = date_pet.hour,
             race = date_pet.race,
             contact = date_pet.contact,
-            user_id= date_pet.user_id
+            user_id = sharedPref.getLong("user_id",-1)
         )) }
 
         return datepets
